@@ -11,7 +11,7 @@ With **MCP**, an AI agent can connect to external tools and services and use the
 
 In this project:
 
-**User → Qwen3:8B → LLM → MCP Servers → External Tools → Response**
+**User → Qwen3:8B/Cursor → LLM → MCP Servers → External Tools → Response**
 
 
 ## 🧩 MCP Servers Used
@@ -149,7 +149,7 @@ The agent can determine which MCP tool is appropriate and use it to complete the
                           │
                           ▼
                  ┌─────────────────┐
-                 │   Qwen3:8B 
+                 │ Qwen3:8B/Cursor
                  └────────┬────────┘
                           │
                           ▼
