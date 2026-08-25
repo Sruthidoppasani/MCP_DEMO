@@ -1,27 +1,24 @@
 import asyncio
 
 from dotenv import load_dotenv
-from langchain_ollama import ChatOllama
-
+from langchain_groq import ChatGroq
 from mcp_use import MCPAgent, MCPClient
-
+import os
+load_dotenv()
 
 async def run_memory_chat():
     """Run a chat using MCPAgent's built-in conversation memory."""
-    # Load environment variables for API keys
-    load_dotenv()
 
     # Config file path - change this to your config file
-    config_file = "examples/browser_mcp.json"
+    config_file = "browser_mcp.json"
 
     print("Initializing chat...")
 
     # Create MCP client and agent with memory enabled
     client = MCPClient.from_config_file(config_file)
-    llm = ChatOllama(
-    model="qwen3:8b",
-    temperature=0
-)
+    llm = ChatGroq(model="openai/gpt-oss-120b",
+    api_key=os.getenv("GROQ_API_KEY"),
+    temperature = 0)
 
     # Create agent with memory_enabled=True
     agent = MCPAgent(
@@ -34,11 +31,12 @@ async def run_memory_chat():
     print("\n===== Interactive MCP Chat =====")
     print("Type 'exit' or 'quit' to end the conversation")
     print("Type 'clear' to clear conversation history")
-    print("==================================\n")
+    print("=====================================\n")
 
     try:
         # Main chat loop
         while True:
+
             # Get user input
             user_input = input("\nYou: ")
 
@@ -57,7 +55,8 @@ async def run_memory_chat():
             print("\nAssistant: ", end="", flush=True)
 
             try:
-                # Run the agent with the user input (memory handling is automatic)
+                # Run the agent with the user input
+                # Memory handling is automatic
                 response = await agent.run(user_input)
                 print(response)
 
