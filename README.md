@@ -1,8 +1,7 @@
 # 🤖 MCP Agent with Cursor
+An AI-powered agent built using Model Context Protocol (MCP), where the agent can interact with external tools through MCP servers while maintaining conversation memory across interactions.
 
-An AI-powered agent project built using **Model Context Protocol (MCP)**, where **Cursor acts as the AI agent** and interacts with multiple MCP servers to perform real-world tasks.
-
-The project demonstrates how an LLM-based agent can dynamically use external tools such as web search, browser automation, and travel/accommodation search.
+The project uses Qwen3:8B running locally through Ollama as the language model and MCPAgent from mcp-use to manage the agent workflow.
 
 ## 🌟 Project Overview
 
@@ -12,9 +11,8 @@ With **MCP**, an AI agent can connect to external tools and services and use the
 
 In this project:
 
-**User → Cursor Agent → LLM → MCP Servers → External Tools → Response**
+**User → Qwen3:8B → LLM → MCP Servers → External Tools → Response**
 
-Cursor acts as the agent and decides which available MCP tool is useful for completing the task.
 
 ## 🧩 MCP Servers Used
 
@@ -54,8 +52,8 @@ Examples:
 * **Python**
 * **MCP (Model Context Protocol)**
 * **mcp-use**
-* **Groq**
-* **LLMs**
+* **Ollama**
+* **Qwen3.8B**
 * **Cursor**
 * **Playwright**
 * **DuckDuckGo Search**
@@ -151,7 +149,7 @@ The agent can determine which MCP tool is appropriate and use it to complete the
                           │
                           ▼
                  ┌─────────────────┐
-                 │ Cursor AI Agent │
+                 │   Qwen3:8B 
                  └────────┬────────┘
                           │
                           ▼
